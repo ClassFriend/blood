@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html><body><p>&#65279;		
+
+		
+
+       </p>
+
+           <meta charset="utf-8"><title> &#2477;&#2480;&#2509;&#2468;&#2495; &#2475;&#2480;&#2478;  </title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="css/css-bootstrap.min.css"><link rel="stylesheet" href="css/css-styleBkkb.css"><link rel="stylesheet" href="css/cx_js_css-jquery-ui.css"><script src="js/4173-cx_js_css-jquery-1.12.4.js"></script><script src="js/2694-cx_js_css-jquery-ui.js"></script><script>
+
+  $( function() {
+
+  
+
+  	 $( "#anim" ).on( "change", function() {
+
+      $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
+
+    });
+
+	
+
+	
+
+    $( "#datepicker" ).datepicker({
+
+      changeMonth: true,
+
+      changeYear: true,
+
+    });
+
+	
+
+	
+
+	
+
+	 $( "#anim" ).on( "change", function() {
+
+      $( "#datepicker2" ).datepicker( "option", "showAnim", $( this ).val() );
+
+    });
+
+	
+
+	
+
+    $( "#datepicker2" ).datepicker({
+
+      changeMonth: true,
+
+      changeYear: true,
+
+    });
+
+	
+
+
+
+
+	
+
+  } );
+
+  </script><script src="js/.-528-select.js"></script><style>
+
+    .regModalHeading {
+
+        text-align: center;
+
+        font-weight: bold;
+
+        color: #662D91;
+
+    }
+
+    h3, .h3 {
+
+        font-size: 24px;
+
+    }
+
+    .modal-header {
+
+        border-bottom: 3px solid #0D5E35;
+
+        border-image: url(/upload/frontend/border-bg.png) 30;
+
+    }
+
+    
+
+    .day,th{cursor:pointer;
+
+    
+
+        
+
+       
+
+    }
+
+    
+
+     body { background: #ddd; }
+
+</style><script src="js/3.2.1-jquery.min.js"></script><script>
+
+	     $(document).ready(function(){
+
+		 
+
+		 
+
+		 function GetAge(year, month, day)
+
+{
+
+	var now = new Date()	
+
+	var age = now.getFullYear() - year
+
+	var mdif = now.getMonth() - month + 1 //0=jan	
+
+	
+
+	if(mdif < 0)
+
+	{
+
+		--age
+
+	}
+
+	else if(mdif == 0)
+
+	{
+
+		var ddif = now.getDate() - day
+
+		
+
+		if(ddif < 0)
+
+		{
+
+			--age
+
+		}
+
+	}
+
+
+
+	return age;
+
+}
+
+		 
+
+		 
+
+		 $('#fld_youthreg_yr').on('change',function(){
+
+		 
+
+		 
+
+				var fld_youthreg_day  =  document.getElementById("fld_youthreg_day").value;
+
+				var fld_youthreg_mon =  document.getElementById("fld_youthreg_mon").value;
+
+				var fld_youthreg_yr=  document.getElementById("fld_youthreg_yr").value;
+
+				
+
+				
+
+				var mizan1  =  GetAge(fld_youthreg_yr, fld_youthreg_mon, fld_youthreg_day);
+
+			
+
+                var mizan2 = mizan1.toString();
+
+				
+
+			
+
+			var finalEnlishToBanglaNumber={'0':'&#2534;','1':'&#2535;','2':'&#2536;','3':'&#2537;','4':'&#2538;','5':'&#2539;','6':'&#2540;','7':'&#2541;','8':'&#2542;','9':'&#2543;'};
+
+			
+
+			String.prototype.getDigitBanglaFromEnglish = function() {
+
+			var retStr = this;
+
+			for (var x in finalEnlishToBanglaNumber) {
+
+			retStr = retStr.replace(new RegExp(x, 'g'), finalEnlishToBanglaNumber[x]);
+
+			}
+
+			return retStr;
+
+			};
+
+		
+
+			var mizan2=mizan2.getDigitBanglaFromEnglish();
+
+			
+
+		
+
+			
+
+			var mizan3 = mizan2.toString();
+
+			
+
+			//alert(mizan3);
+
+			
+
+		
+                if(mizan1 > 17 && mizan1 < 36 )
+				{
+				
+				   document.getElementById("agecal").value=mizan3+" &#2476;&#2459;&#2480;";
+				
+                }else{
+				
+				document.getElementById("agecal").value= "";
+				alert("Age Limit 18 To 35");
+				
+				
+				}
+				
+          //document.getElementById("agecalxxxx").value=mizan1;
+				
+
+				//alert(fld_youthreg_mon);
+
+		 
+
+		   });
+
+		   
+
+		   
+
+		   
+
+	         
+
+	       $('#chkc').on('click',function(){
+
+		   
+
+		 
+
+
+
+        
+
+         if(this.checked==true){
+
+		 
+
+          // alert("fffff");   
+
+		    
+
+     document.getElementById("s_home").value =  document.getElementById("b_home").value;
+
+     document.getElementById("s_road").value =  document.getElementById("b_road").value;
+
+     document.getElementById("s_dakghor").value =  document.getElementById("b_dakghor").value;
+
+	 
+
+	 
+
+	 document.getElementById("fldzilakkx").value =  document.getElementById("fldzilax").value;
+
+
+
+      
+
+     var fldb_zila =  document.getElementById("fldzilax").value;
+
+	 
+
+	 
+
+	 var upfld1 =  document.getElementById("fldupo").value;
+
+	 
+
+	
+
+   
+
+$.ajax({ url: 'search_up3.php',
+
+	data: {'fldzila':fldb_zila, 'upfld1':upfld1},
+
+	type: 'post',
+
+	success: function(output) {
+
+	
+
+	//alert(output);
+
+
+
+	document.getElementById("upo").innerHTML = output;
+
+	   }
+
+	});
+
+	 
+
+    }else{
+
+      
+
+	 document.getElementById("s_home").value =  "";
+
+	 document.getElementById("s_road").value =  "";
+
+	 document.getElementById("s_dakghor").value =  "";
+
+	 document.getElementById("fldzilakkx").value = "";
+
+	 document.getElementById("upo").innerHTML = "";
+
+	  
+
+    }
+
+        
+
+  
+
+	
+
+	});     
+
+	
+
+	     });
+
+	        
+
+	    </script><div class="container" style="margin-top:-20px !important;">
+
+    <div class="row">
+
+            &#65279;<nav class="navbar navbar-default" style="background-color:#A5479B !important;"><!-- Logged In --><!-- Not Logged In --><div class="container" style="padding-bottom: 18px; padding-top: 18px;">
+
+              <div class="navbar-header">
+
+                   
+
+                        <span class="icon-bar"></span>
+
+                        <span class="icon-bar"></span>
+
+                        <span class="icon-bar"></span>
+
+                    
+
+
+
+
+  <a style="color: white;font-size:18px !important; text-decoration:underline; font-weight:bold;" class="navbar-brand hidden-sm hidden-xs" href="index.html">   &#2489;&#2507;&#2478;   </a>        
+                  <a style="color: white;font-size:22px !important;" class="navbar-brand hidden-sm hidden-xs" href="#"> &gt;&gt; &#2477;&#2480;&#2509;&#2468;&#2495;  &#2475;&#2480;&#2478; </a>                </div>
+
+                
+
+            </div>
+
+                    </nav></div>
+
+</div>
+
+
+
+<div class="container" style="margin-top:-20px !important;">
+
+   
+
+</div>
+
+
+
+      <div class="container bg">
+
+       
+
+            <div class="row">
+
+
+
+                <div class="col-md-12" style="padding-top:50px">
+
+                    <div class="panel panel-default">
+
+                       
+                        <div class="panel-body">
+
+                           <form action="" method="POST" enctype="multipart/form-data">
+
+						   
+
+						
+
+						
+
+						<div class="col-md-12" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    
+
+                                 <div class="alert alert-danger" style="background-color: #696A6A; !important; color: white !important">
+
+  						   <p style="font-size:18px; white"><strong> &#2453;&#2503;&#2472;&#2509;&#2470;&#2509;&#2480;&#2503;&#2480; &#2468;&#2469;&#2509;&#2479;  </strong></p>	
+
+						   </div>
+
+
+
+                               
+
+							</div></div>
+
+
+
+						   <div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4"> &#2476;&#2495;&#2477;&#2494;&#2455; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                 
+
+								 <select type="text" class="form-control" id="fldbivag" onchange="updateup()" name="bivag"><option>&#2476;&#2495;&#2477;&#2494;&#2455; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option><option value="1">&#2458;&#2463;&#2509;&#2463;&#2455;&#2509;&#2480;&#2494;&#2478;</option><option value="2">&#2480;&#2494;&#2460;&#2486;&#2494;&#2489;&#2496;</option><option value="3">&#2454;&#2497;&#2482;&#2472;&#2494;</option><option value="4">&#2476;&#2480;&#2495;&#2486;&#2494;&#2482;</option><option value="5">&#2488;&#2495;&#2482;&#2503;&#2463;</option><option value="6">&#2466;&#2494;&#2453;&#2494;</option><option value="7">&#2480;&#2434;&#2474;&#2497;&#2480;</option><option value="8">&#2478;&#2527;&#2478;&#2472;&#2488;&#2495;&#2434;&#2489;</option></select></div>
+
+                                </div> </div>
+
+								
+
+								
+
+								<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4">  &#2453;&#2503;&#2472;&#2509;&#2470;&#2509;&#2480; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                 <select type="text" class="form-control" id="fldcenter" name="center"><option value=""> &#2453;&#2503;&#2472;&#2509;&#2470;&#2509;&#2480; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option></select></div>
+
+                                </div> </div>
+
+								
+
+								<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4"> &#2463;&#2509;&#2480;&#2503;&#2465; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+									
+
+									
+
+                                 <select type="text" class="form-control" id="fld_trades" name="fld_trades"><option value=""> &#2463;&#2509;&#2480;&#2503;&#2465; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option></select></div>
+
+                                </div> </div> 
+
+								
+
+								<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4"> &#2488;&#2503;&#2486;&#2472; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                 <select type="text" class="form-control" id="fld_session" name="fld_session"><option value=""> &#2488;&#2503;&#2486;&#2472; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option><!--	 <option> &#2460;&#2494;&#2472;&#2497;&#2479;&#2492;&#2494;&#2480;&#2496;-&#2460;&#2497;&#2472; &#2536;&#2534;&#2536;&#2535; </option>--><!-- <option> &#2460;&#2497;&#2482;&#2494;&#2439;-&#2465;&#2495;&#2488;&#2503;&#2478;&#2509;&#2476;&#2480; &#2536;&#2534;&#2536;&#2535; </option> --><option> &#2460;&#2494;&#2472;&#2497;&#2479;&#2492;&#2494;&#2480;&#2496;-&#2460;&#2497;&#2472;    &#2536;&#2534;&#2536;&#2535; </option><option> &#2460;&#2497;&#2482;&#2494;&#2439;-&#2465;&#2495;&#2488;&#2503;&#2478;&#2509;&#2476;&#2480; &#2536;&#2534;&#2536;&#2535; </option></select></div>
+
+                                </div> </div>
+
+								
+
+								
+
+								
+
+							<div class="col-md-12" style="margin-top:30px;">
+
+							<div class="form-group">
+
+                                    
+
+                           <div class="alert alert-danger" style="background-color: #696A6A; !important; color: white !important">
+
+  						   <p style="font-size:18px; white"><strong> &#2438;&#2476;&#2503;&#2470;&#2472;&#2453;&#2494;&#2480;&#2496;&#2480; &#2468;&#2469;&#2509;&#2479;  </strong></p>	
+
+						   </div>
+
+							</div></div>
+
+
+
+
+
+					    <div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4">&#2472;&#2494;&#2478; (&#2476;&#2494;&#2434;&#2482;&#2494;&#2479;&#2492;)-<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                       <input type="text" class="form-control" name="bang_name" value=""></div>
+
+                                </div>
+
+					</div>
+
+							
+
+				 <div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2472;&#2494;&#2478; (&#2439;&#2434;&#2480;&#2503;&#2460;&#2495;&#2468;&#2503; )-<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="eng_name" style="text-transform:uppercase" value=""></div>
+
+                                </div>
+
+					</div>
+
+
+
+<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px"> &#2474;&#2495;&#2468;&#2494;&#2480; &#2472;&#2494;&#2478;(&#2476;&#2494;&#2434;&#2482;&#2494;&#2479;&#2492;)-<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="fa_bng_name" value=""></div>
+
+                                </div>
+
+					</div>
+
+					
+
+<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px"> &#2474;&#2495;&#2468;&#2494;&#2480; &#2472;&#2494;&#2478;(&#2439;&#2434;&#2480;&#2503;&#2460;&#2495;&#2468;&#2503; )-<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="fa_eng_name" style="text-transform:uppercase" value=""></div>
+
+                                </div>
+
+					</div>
+
+
+
+<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">  &#2478;&#2494;&#2468;&#2494;&#2480; &#2472;&#2494;&#2478;(&#2476;&#2494;&#2434;&#2482;&#2494;&#2479;&#2492;)-<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="mo_bng_name" value=""></div>
+
+                                </div>
+
+					</div>
+
+
+
+<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px"> &#2478;&#2494;&#2468;&#2494;&#2480; &#2472;&#2494;&#2478;(&#2439;&#2434;&#2480;&#2503;&#2460;&#2495;&#2468;&#2503; )-<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="mo_eng_name" style="text-transform:uppercase" value=""></div>
+
+                                </div>
+
+					</div>
+
+<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">NID/&#2460;&#2472;&#2509;&#2478; &#2472;&#2495;&#2476;&#2472;&#2509;&#2471;&#2472; &#2472;&#2434;<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="nid_br_num" placeholder="NID/&#2460;&#2472;&#2509;&#2478; &#2472;&#2495;&#2476;&#2472;&#2509;&#2471;&#2472; &#2472;&#2434; &#2470;&#2495;&#2472; (&#2439;&#2434;&#2480;&#2503;&#2460;&#2496;&#2468;&#2503;)" onkeypress="return (event.charCode &gt;= 0 &amp;&amp; event.charCode &lt;= 126)"></div>
+
+                                </div>
+
+					</div>					
+
+					
+
+				
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2486;&#2495;&#2453;&#2509;&#2487;&#2494;&#2455;&#2468; &#2479;&#2507;&#2455;&#2509;&#2479;&#2468;&#2494;<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                 <select type="text" class="form-control" name="study"><option value="1">&#2542;&#2478; &#2486;&#2509;&#2480;&#2503;&#2467;&#2496;</option><option value="2">&#2447;&#2488;&#2447;&#2488;&#2488;&#2495;</option><option value="3">&#2447;&#2439;&#2488;&#2447;&#2488;&#2488;&#2495;</option><option value="4"> &#2476;&#2495;&#2447;/&#2437;&#2472;&#2494;&#2480;&#2509;&#2488;</option><option value="5"> &#2478;&#2494;&#2488;&#2509;&#2463;&#2494;&#2480;&#2509;&#2488;</option><option value="6"> &#2465;&#2495;&#2474;&#2509;&#2482;&#2507;&#2478;&#2494; &#2439;&#2462;&#2509;&#2460;&#2495;&#2472;&#2495;&#2479;&#2492;&#2494;&#2480;&#2495;&#2434;</option></select></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+								
+
+								
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2460;&#2472;&#2509;&#2478; &#2468;&#2494;&#2480;&#2495;&#2454;<span class="mark">*</span></label>
+
+									
+
+									
+
+                                    <div class="col-sm-2" style="padding-left:0px !important">
+
+                                        <select name="birth_date_day" class="form-control" value="" id="fld_youthreg_day" style=" margin-left:10px;"><option value=""> &#2470;&#2495;&#2472; </option><option value="1">&#2535;</option><option value="2">&#2536;</option><option value="3">&#2537;</option><option value="4">&#2538;</option><option value="5">&#2539;</option><option value="6">&#2540;</option><option value="7">&#2541;</option><option value="8">&#2542;</option><option value="9">&#2543;</option><option value="10">&#2535;&#2534;</option><option value="11">&#2535;&#2535;</option><option value="12">&#2535;&#2536;</option><option value="13">&#2535;&#2537;</option><option value="14">&#2535;&#2538;</option><option value="15">&#2535;&#2539;</option><option value="16">&#2535;&#2540;</option><option value="17">&#2535;&#2541;</option><option value="18">&#2535;&#2542;</option><option value="19">&#2535;&#2543;</option><option value="20">&#2536;&#2534;</option><option value="21">&#2536;&#2535;</option><option value="22">&#2536;&#2536;</option><option value="23">&#2536;&#2537;</option><option value="24">&#2536;&#2538;</option><option value="25">&#2536;&#2539;</option><option value="26">&#2536;&#2540;</option><option value="27">&#2536;&#2541;</option><option value="28">&#2536;&#2542;</option><option value="29">&#2536;&#2543;</option><option value="30">&#2537;&#2534;</option><option value="31">&#2537;&#2535;</option></select></div>
+
+
+
+
+
+<div class="col-sm-3" style="padding-left:0px !important">
+
+
+
+<select name="birth_date_month" class="form-control" placeholder="&#2478;&#2494;&#2488;" value="" id="fld_youthreg_mon"><option value="">&#2478;&#2494;&#2488;</option><option value="01">&#2460;&#2494;&#2472;&#2497;&#2479;&#2492;&#2494;&#2480;&#2496;</option><option value="02">&#2475;&#2503;&#2476;&#2509;&#2480;&#2497;&#2479;&#2492;&#2494;&#2480;&#2496;</option><option value="03">&zwj;&#2478;&#2494;&#2480;&#2509;&#2458;</option><option value="04">&#2447;&#2474;&#2509;&#2480;&#2495;&#2482;</option><option value="05">&#2478;&#2503;</option><option value="06">&#2460;&#2497;&#2472;</option><option value="07">&#2460;&#2497;&#2482;&#2494;&#2439;</option><option value="08">&#2438;&#2455;&#2488;&#2509;&#2463;</option><option value="09">&#2488;&#2503;&#2474;&#2509;&#2463;&#2503;&#2478;&#2509;&#2476;&#2480;</option><option value="10">&#2437;&#2453;&#2509;&#2463;&#2507;&#2476;&#2480;</option><option value="11">&#2472;&#2477;&#2503;&#2478;&#2509;&#2476;&#2480;</option><option value="12">&#2465;&#2495;&#2488;&#2503;&#2478;&#2509;&#2476;&#2480;</option></select></div>
+
+
+
+<div class="col-sm-3" style="padding-left:0px !important">
+
+<select name="birth_date_year" required class="form-control" placeholder="&#2488;&#2494;&#2482;" value="" id="fld_youthreg_yr"><option value="">&#2488;&#2494;&#2482;</option><option value="1970">&#2535;&#2543;&#2541;&#2534;</option><option value="1971">&#2535;&#2543;&#2541;&#2535;</option><option value="1972">&#2535;&#2543;&#2541;&#2536;</option><option value="1973">&#2535;&#2543;&#2541;&#2537;</option><option value="1974">&#2535;&#2543;&#2541;&#2538;</option><option value="1975">&#2535;&#2543;&#2541;&#2539;</option><option value="1976">&#2535;&#2543;&#2541;&#2540;</option><option value="1977">&#2535;&#2543;&#2541;&#2541;</option><option value="1978">&#2535;&#2543;&#2541;&#2542;</option><option value="1979">&#2535;&#2543;&#2541;&#2543;</option><option value="1980">&#2535;&#2543;&#2542;&#2534;</option><option value="1981">&#2535;&#2543;&#2542;&#2535;</option><option value="1982">&#2535;&#2543;&#2542;&#2536;</option><option value="1983">&#2535;&#2543;&#2542;&#2537;</option><option value="1984">&#2535;&#2543;&#2542;&#2538;</option><option value="1985">&#2535;&#2543;&#2542;&#2539;</option><option value="1986">&#2535;&#2543;&#2542;&#2540;</option><option value="1987">&#2535;&#2543;&#2542;&#2541;</option><option value="1988">&#2535;&#2543;&#2542;&#2542;</option><option value="1989">&#2535;&#2543;&#2542;&#2543;</option><option value="1990">&#2535;&#2543;&#2543;&#2534;</option><option value="1991">&#2535;&#2543;&#2543;&#2535;</option><option value="1992">&#2535;&#2543;&#2543;&#2536;</option><option value="1993">&#2535;&#2543;&#2543;&#2537;</option><option value="1994">&#2535;&#2543;&#2543;&#2538;</option><option value="1995">&#2535;&#2543;&#2543;&#2539;</option><option value="1996">&#2535;&#2543;&#2543;&#2540;</option><option value="1997">&#2535;&#2543;&#2543;&#2541;</option><option value="1998">&#2535;&#2543;&#2543;&#2542;</option><option value="1999">&#2535;&#2543;&#2543;&#2543;</option><option value="2000">&#2536;&#2534;&#2534;&#2534;</option><option value="2001">&#2536;&#2534;&#2534;&#2535;</option><option value="2002">&#2536;&#2534;&#2534;&#2536;</option><option value="2003">&#2536;&#2534;&#2534;&#2537;</option><option value="2004">&#2536;&#2534;&#2534;&#2538;</option><option value="2005">&#2536;&#2534;&#2534;&#2539;</option><option value="2006">&#2536;&#2534;&#2534;&#2540;</option><option value="2007">&#2536;&#2534;&#2534;&#2541;</option><option value="2008">&#2536;&#2534;&#2534;&#2542;</option><option value="2009">&#2536;&#2534;&#2534;&#2543;</option><option value="2010">&#2536;&#2534;&#2535;&#2534;</option></select></div>
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+
+									
+
+						
+
+									
+
+									
+
+									
+
+									
+
+									
+
+                                </div>
+
+					</div>
+
+					
+
+					
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px"> &#2476;&#2479;&#2492;&#2488;&#2435; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                            <input class="form-control" style="width:200px; float:right;" type="text" name="agecal" id="agecal" readonly required></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					
+
+					<div class="col-md-12" style="margin-top:30px;">
+
+							<div class="form-group">
+
+                                    
+
+                           <div class="alert alert-danger" style="background-color: #696A6A; !important; color: white !important">
+
+  						   <p style="font-size:18px; color:white;"><strong> &#2464;&#2495;&#2453;&#2494;&#2472;&#2494; </strong></p>	
+
+						   </div>
+
+							</div></div>
+
+							
+
+					<div class="col-md-12" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2476;&#2480;&#2509;&#2468;&#2478;&#2494;&#2472; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        
+
+                                    </div>
+
+                                </div>
+
+					</div>
+
+					
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2476;&#2494;&#2465;&#2492;&#2495;/&#2455;&#2509;&#2480;&#2494;&#2478;/&#2478;&#2489;&#2482;&#2509;&#2482;&#2494; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="b_home" id="b_home" value=""></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2488;&#2465;&#2492;&#2453;/&#2476;&#2509;&#2482;&#2453;/&#2488;&#2503;&#2453;&#2509;&#2463;&#2480; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="b_road" id="b_road" value=""></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2465;&#2494;&#2453;&#2456;&#2480; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="b_dakghor" id="b_dakghor" value=""></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2460;&#2503;&#2482;&#2494; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                <select class="form-control" id="fldzilax" onchange="updatekk()" name="b_zila"><option>&#2460;&#2503;&#2482;&#2494; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option><option value="11">&#2476;&#2480;&#2455;&#2497;&#2472;&#2494;</option><option value="12">&#2476;&#2480;&#2495;&#2486;&#2494;&#2482;</option><option value="13">&#2477;&#2507;&#2482;&#2494;</option><option value="14">&#2461;&#2494;&#2482;&#2453;&#2494;&#2464;&#2496;</option><option value="15">&#2474;&#2463;&#2497;&#2527;&#2494;&#2454;&#2494;&#2482;&#2496;</option><option value="16">&#2474;&#2495;&#2480;&#2507;&#2460;&#2474;&#2497;&#2480;</option><option value="17">&#2476;&#2494;&#2472;&#2509;&#2470;&#2480;&#2476;&#2494;&#2472;</option><option value="18">&#2476;&#2509;&#2480;&#2494;&#2453;&#2509;&#2487;&#2509;&#2478;&#2467;&#2476;&#2494;&#2524;&#2495;&#2527;&#2494;</option><option value="19">&#2458;&#2494;&#2433;&#2470;&#2474;&#2497;&#2480;</option><option value="20">&#2458;&#2463;&#2509;&#2480;&#2455;&#2509;&#2480;&#2494;&#2478;</option><option value="21">&#2453;&#2497;&#2478;&#2495;&#2482;&#2509;&#2482;&#2494;</option><option value="22">&#2453;&#2453;&#2509;&#2488;&#2476;&#2494;&#2460;&#2494;&#2480;</option><option value="23">&#2475;&#2503;&#2472;&#2496;</option><option value="24">&#2454;&#2494;&#2455;&#2524;&#2494;&#2459;&#2524;&#2495;</option><option value="25">&#2482;&#2453;&#2509;&#2487;&#2509;&#2478;&#2496;&#2474;&#2497;&#2480;</option><option value="26">&#2472;&#2507;&#2527;&#2494;&#2454;&#2494;&#2482;&#2496;</option><option value="27">&#2480;&#2494;&#2457;&#2509;&#2455;&#2494;&#2478;&#2494;&#2463;&#2495;</option><option value="28">&#2466;&#2494;&#2453;&#2494;</option><option value="29">&#2475;&#2480;&#2495;&#2470;&#2474;&#2497;&#2480;</option><option value="30">&#2455;&#2494;&#2460;&#2496;&#2474;&#2497;&#2480;</option><option value="31">&#2455;&#2507;&#2474;&#2494;&#2482;&#2455;&#2462;&#2509;&#2460;</option><option value="32">&#2453;&#2495;&#2486;&#2507;&#2480;&#2455;&#2462;&#2509;&#2460;</option><option value="33">&#2478;&#2494;&#2472;&#2495;&#2453;&#2455;&#2462;&#2509;&#2460;</option><option value="34">&#2478;&#2497;&#2472;&#2509;&#2488;&#2496;&#2455;&#2462;&#2509;&#2460;</option><option value="35">&#2472;&#2494;&#2480;&#2494;&#2527;&#2472;&#2455;&#2462;&#2509;&#2460;</option><option value="36">&#2472;&#2480;&#2488;&#2495;&#2434;&#2470;&#2496;</option><option value="37">&#2480;&#2494;&#2460;&#2476;&#2494;&#2524;&#2496;</option><option value="38">&#2486;&#2480;&#2495;&#2527;&#2468;&#2474;&#2497;&#2480;</option><option value="39">&#2463;&#2494;&#2457;&#2509;&#2455;&#2494;&#2439;&#2482;</option><option value="40">&#2476;&#2494;&#2455;&#2503;&#2480;&#2489;&#2494;&#2463;</option><option value="41">&#2458;&#2497;&#2527;&#2494;&#2465;&#2494;&#2457;&#2509;&#2455;&#2494;</option><option value="42">&#2479;&#2486;&#2507;&#2480;</option><option value="43">&#2461;&#2495;&#2472;&#2494;&#2439;&#2470;&#2489;</option><option value="44">&#2454;&#2497;&#2482;&#2472;&#2494;</option><option value="45">&#2453;&#2497;&#2487;&#2509;&#2463;&#2495;&#2527;&#2494;</option><option value="46">&#2478;&#2494;&#2455;&#2497;&#2480;&#2494;</option><option value="47">&#2478;&#2503;&#2489;&#2503;&#2480;&#2474;&#2497;&#2480;</option><option value="48">&#2478;&#2494;&#2470;&#2494;&#2480;&#2496;&#2474;&#2497;&#2480;</option><option value="49">&#2472;&#2524;&#2494;&#2439;&#2482;</option><option value="50">&#2488;&#2494;&#2468;&#2453;&#2509;&#2487;&#2496;&#2480;&#2494;</option><option value="51">&#2476;&#2455;&#2497;&#2524;&#2494;</option><option value="52">&#2458;&#2494;&#2433;&#2474;&#2494;&#2439; &#2472;&#2476;&#2494;&#2476;&#2455;&#2462;&#2509;&#2460;</option><option value="53">&#2460;&#2527;&#2474;&#2497;&#2480;&#2489;&#2494;&#2463;</option><option value="54">&#2474;&#2494;&#2476;&#2472;&#2494;</option><option value="55">&#2472;&#2451;&#2455;&#2494;&#2433;</option><option value="56">&#2472;&#2494;&#2463;&#2507;&#2480;</option><option value="57">&#2480;&#2494;&#2460;&#2486;&#2494;&#2489;&#2496;</option><option value="58">&#2488;&#2495;&#2480;&#2494;&#2460;&#2455;&#2462;&#2509;&#2460;</option><option value="59">&#2470;&#2495;&#2472;&#2494;&#2460;&#2474;&#2497;&#2480;</option><option value="60">&#2455;&#2494;&#2439;&#2476;&#2494;&#2472;&#2509;&#2471;&#2494;</option><option value="61">&#2453;&#2497;&#2524;&#2495;&#2455;&#2509;&#2480;&#2494;&#2478;</option><option value="62">&#2482;&#2494;&#2482;&#2478;&#2472;&#2495;&#2480;&#2489;&#2494;&#2463;</option><option value="63">&#2472;&#2496;&#2482;&#2475;&#2494;&#2478;&#2494;&#2480;&#2496;</option><option value="64">&#2474;&#2462;&#2509;&#2458;&#2455;&#2524;</option><option value="65">&#2480;&#2434;&#2474;&#2497;&#2480;</option><option value="66">&#2464;&#2494;&#2453;&#2497;&#2480;&#2455;&#2494;&#2433;&#2451;</option><option value="67">&#2489;&#2476;&#2495;&#2455;&#2462;&#2509;&#2460;</option><option value="68">&#2478;&#2508;&#2482;&#2477;&#2496;&#2476;&#2494;&#2460;&#2494;&#2480;</option><option value="69">&#2488;&#2497;&#2472;&#2494;&#2478;&#2455;&#2462;&#2509;&#2460;</option><option value="70">&#2488;&#2495;&#2482;&#2503;&#2463;</option><option value="71">&#2478;&#2527;&#2478;&#2472;&#2488;&#2495;&#2434;&#2489;</option><option value="72">&#2486;&#2503;&#2480;&#2474;&#2497;&#2480;</option><option value="73">&#2460;&#2494;&#2478;&#2494;&#2482;&#2474;&#2497;&#2480;</option><option value="74">&#2472;&#2503;&#2468;&#2509;&#2480;&#2453;&#2507;&#2467;&#2494;</option></select></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2469;&#2494;&#2472;&#2494;/&#2441;&#2474;&#2460;&#2503;&#2482;&#2494; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+             <select type="text" class="form-control" id="fldupo" name="b_upo"><option value="">&#2474;&#2509;&#2480;&#2469;&#2478;&#2503; &#2460;&#2503;&#2482;&#2494; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option></select></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-12" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2488;&#2509;&#2469;&#2494;&#2479;&#2492;&#2496;
+
+									<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input style="float:left;" id="chkc" class="checkbox" type="checkbox"><span class="mark">&#2476;&#2480;&#2509;&#2468;&#2478;&#2494;&#2472; &#2464;&#2495;&#2453;&#2494;&#2472;&#2494; &#2447;&#2476;&#2434; &#2488;&#2509;&#2469;&#2494;&#2479;&#2492;&#2496; &#2464;&#2495;&#2453;&#2494;&#2472;&#2494; &#2447;&#2453;&#2439; &#2489;&#2482;&#2503;&#2404;</span>
+
+                                    </div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2476;&#2494;&#2465;&#2492;&#2495;/&#2455;&#2509;&#2480;&#2494;&#2478;/&#2478;&#2489;&#2482;&#2509;&#2482;&#2494; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="s_home" id="s_home" value=""></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2488;&#2465;&#2492;&#2453;/&#2476;&#2509;&#2482;&#2453;/&#2488;&#2503;&#2453;&#2509;&#2463;&#2480; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="s_road" id="s_road" value=""></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2465;&#2494;&#2453;&#2456;&#2480; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control" name="s_dakghor" id="s_dakghor" value=""></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2460;&#2503;&#2482;&#2494; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+ <select type="text" class="form-control" id="fldzilakkx" onchange="updatekkx()" name="s_zila"><option>&#2460;&#2503;&#2482;&#2494; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option><option value="11">&#2476;&#2480;&#2455;&#2497;&#2472;&#2494;</option><option value="12">&#2476;&#2480;&#2495;&#2486;&#2494;&#2482;</option><option value="13">&#2477;&#2507;&#2482;&#2494;</option><option value="14">&#2461;&#2494;&#2482;&#2453;&#2494;&#2464;&#2496;</option><option value="15">&#2474;&#2463;&#2497;&#2527;&#2494;&#2454;&#2494;&#2482;&#2496;</option><option value="16">&#2474;&#2495;&#2480;&#2507;&#2460;&#2474;&#2497;&#2480;</option><option value="17">&#2476;&#2494;&#2472;&#2509;&#2470;&#2480;&#2476;&#2494;&#2472;</option><option value="18">&#2476;&#2509;&#2480;&#2494;&#2453;&#2509;&#2487;&#2509;&#2478;&#2467;&#2476;&#2494;&#2524;&#2495;&#2527;&#2494;</option><option value="19">&#2458;&#2494;&#2433;&#2470;&#2474;&#2497;&#2480;</option><option value="20">&#2458;&#2463;&#2509;&#2480;&#2455;&#2509;&#2480;&#2494;&#2478;</option><option value="21">&#2453;&#2497;&#2478;&#2495;&#2482;&#2509;&#2482;&#2494;</option><option value="22">&#2453;&#2453;&#2509;&#2488;&#2476;&#2494;&#2460;&#2494;&#2480;</option><option value="23">&#2475;&#2503;&#2472;&#2496;</option><option value="24">&#2454;&#2494;&#2455;&#2524;&#2494;&#2459;&#2524;&#2495;</option><option value="25">&#2482;&#2453;&#2509;&#2487;&#2509;&#2478;&#2496;&#2474;&#2497;&#2480;</option><option value="26">&#2472;&#2507;&#2527;&#2494;&#2454;&#2494;&#2482;&#2496;</option><option value="27">&#2480;&#2494;&#2457;&#2509;&#2455;&#2494;&#2478;&#2494;&#2463;&#2495;</option><option value="28">&#2466;&#2494;&#2453;&#2494;</option><option value="29">&#2475;&#2480;&#2495;&#2470;&#2474;&#2497;&#2480;</option><option value="30">&#2455;&#2494;&#2460;&#2496;&#2474;&#2497;&#2480;</option><option value="31">&#2455;&#2507;&#2474;&#2494;&#2482;&#2455;&#2462;&#2509;&#2460;</option><option value="32">&#2453;&#2495;&#2486;&#2507;&#2480;&#2455;&#2462;&#2509;&#2460;</option><option value="33">&#2478;&#2494;&#2472;&#2495;&#2453;&#2455;&#2462;&#2509;&#2460;</option><option value="34">&#2478;&#2497;&#2472;&#2509;&#2488;&#2496;&#2455;&#2462;&#2509;&#2460;</option><option value="35">&#2472;&#2494;&#2480;&#2494;&#2527;&#2472;&#2455;&#2462;&#2509;&#2460;</option><option value="36">&#2472;&#2480;&#2488;&#2495;&#2434;&#2470;&#2496;</option><option value="37">&#2480;&#2494;&#2460;&#2476;&#2494;&#2524;&#2496;</option><option value="38">&#2486;&#2480;&#2495;&#2527;&#2468;&#2474;&#2497;&#2480;</option><option value="39">&#2463;&#2494;&#2457;&#2509;&#2455;&#2494;&#2439;&#2482;</option><option value="40">&#2476;&#2494;&#2455;&#2503;&#2480;&#2489;&#2494;&#2463;</option><option value="41">&#2458;&#2497;&#2527;&#2494;&#2465;&#2494;&#2457;&#2509;&#2455;&#2494;</option><option value="42">&#2479;&#2486;&#2507;&#2480;</option><option value="43">&#2461;&#2495;&#2472;&#2494;&#2439;&#2470;&#2489;</option><option value="44">&#2454;&#2497;&#2482;&#2472;&#2494;</option><option value="45">&#2453;&#2497;&#2487;&#2509;&#2463;&#2495;&#2527;&#2494;</option><option value="46">&#2478;&#2494;&#2455;&#2497;&#2480;&#2494;</option><option value="47">&#2478;&#2503;&#2489;&#2503;&#2480;&#2474;&#2497;&#2480;</option><option value="48">&#2478;&#2494;&#2470;&#2494;&#2480;&#2496;&#2474;&#2497;&#2480;</option><option value="49">&#2472;&#2524;&#2494;&#2439;&#2482;</option><option value="50">&#2488;&#2494;&#2468;&#2453;&#2509;&#2487;&#2496;&#2480;&#2494;</option><option value="51">&#2476;&#2455;&#2497;&#2524;&#2494;</option><option value="52">&#2458;&#2494;&#2433;&#2474;&#2494;&#2439; &#2472;&#2476;&#2494;&#2476;&#2455;&#2462;&#2509;&#2460;</option><option value="53">&#2460;&#2527;&#2474;&#2497;&#2480;&#2489;&#2494;&#2463;</option><option value="54">&#2474;&#2494;&#2476;&#2472;&#2494;</option><option value="55">&#2472;&#2451;&#2455;&#2494;&#2433;</option><option value="56">&#2472;&#2494;&#2463;&#2507;&#2480;</option><option value="57">&#2480;&#2494;&#2460;&#2486;&#2494;&#2489;&#2496;</option><option value="58">&#2488;&#2495;&#2480;&#2494;&#2460;&#2455;&#2462;&#2509;&#2460;</option><option value="59">&#2470;&#2495;&#2472;&#2494;&#2460;&#2474;&#2497;&#2480;</option><option value="60">&#2455;&#2494;&#2439;&#2476;&#2494;&#2472;&#2509;&#2471;&#2494;</option><option value="61">&#2453;&#2497;&#2524;&#2495;&#2455;&#2509;&#2480;&#2494;&#2478;</option><option value="62">&#2482;&#2494;&#2482;&#2478;&#2472;&#2495;&#2480;&#2489;&#2494;&#2463;</option><option value="63">&#2472;&#2496;&#2482;&#2475;&#2494;&#2478;&#2494;&#2480;&#2496;</option><option value="64">&#2474;&#2462;&#2509;&#2458;&#2455;&#2524;</option><option value="65">&#2480;&#2434;&#2474;&#2497;&#2480;</option><option value="66">&#2464;&#2494;&#2453;&#2497;&#2480;&#2455;&#2494;&#2433;&#2451;</option><option value="67">&#2489;&#2476;&#2495;&#2455;&#2462;&#2509;&#2460;</option><option value="68">&#2478;&#2508;&#2482;&#2477;&#2496;&#2476;&#2494;&#2460;&#2494;&#2480;</option><option value="69">&#2488;&#2497;&#2472;&#2494;&#2478;&#2455;&#2462;&#2509;&#2460;</option><option value="70">&#2488;&#2495;&#2482;&#2503;&#2463;</option><option value="71">&#2478;&#2527;&#2478;&#2472;&#2488;&#2495;&#2434;&#2489;</option><option value="72">&#2486;&#2503;&#2480;&#2474;&#2497;&#2480;</option><option value="73">&#2460;&#2494;&#2478;&#2494;&#2482;&#2474;&#2497;&#2480;</option><option value="74">&#2472;&#2503;&#2468;&#2509;&#2480;&#2453;&#2507;&#2467;&#2494;</option></select></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px">&#2469;&#2494;&#2472;&#2494;/&#2441;&#2474;&#2460;&#2503;&#2482;&#2494; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                      <select type="text" class="form-control" id="upo" name="s_upo"><option value=""> &#2474;&#2509;&#2480;&#2469;&#2478;&#2503; &#2460;&#2503;&#2482;&#2494; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option></select></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px"> &#2471;&#2480;&#2509;&#2478; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                      <select type="text" class="form-control" required id="fld_relig" name="fld_relig"><option value=""> &#2471;&#2480;&#2509;&#2478; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472;</option><option> &#2439;&#2488;&#2482;&#2494;&#2478; </option><option> &#2488;&#2472;&#2494;&#2468;&#2472; </option><option> &#2454;&#2509;&#2480;&#2495;&#2488;&#2509;&#2463;&#2494;&#2472; </option><option> &#2476;&#2508;&#2470;&#2509;&#2471; </option><option> &#2437;&#2472;&#2509;&#2479;&#2494;&#2472;&#2509;&#2479; </option></select></div>
+
+                                </div>
+
+					</div>
+
+					<div class="col-md-6" style="margin-top:10px;">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4" style="font-size:12px"> &#2482;&#2495;&#2457;&#2509;&#2455; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                      <select type="text" class="form-control" id="fld_sex" name="fld_sex" required><option value=""> &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472; &#2453;&#2480;&#2497;&#2472; </option><option value="1"> &#2474;&#2497;&#2480;&#2497;&#2487; </option><option value="2"> &#2478;&#2489;&#2495;&#2482;&#2494; </option><option value="3"> &#2437;&#2472;&#2509;&#2479;&#2494;&#2472;&#2509;&#2479; </option></select></div>
+
+                                </div>
+
+					</div>
+
+					
+
+					
+
+					
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;  margin-bottom:10px">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4"><span class="mark"></span></label>
+
+                                    <div class="col-sm-8">
+
+                                        
+
+
+
+                                        
+
+                                    </div>
+
+                                </div> </div>
+
+					
+
+					<div class="col-md-6" style="margin-top:10px;  margin-bottom:10px">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4">&#2478;&#2507;&#2476;&#2494;&#2439;&#2482;<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        
+<input type="text" onkeypress="return (event.charCode &gt;= 0 &amp;&amp; event.charCode &lt;= 126)" class="form-control" placeholder="&#2478;&#2507;&#2476;&#2494;&#2439;&#2482; &#2472;&#2478;&#2509;&#2476;&#2480; &#2470;&#2495;&#2472; (&#2439;&#2434;&#2480;&#2503;&#2460;&#2496;&#2468;&#2503;)" name="mobile"></div>
+
+                                </div> </div>
+
+								
+
+								<div class="col-md-6" style="margin-top:10px;  margin-bottom:10px">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4"> &#2439;-&#2478;&#2503;&#2439;&#2482; </label>
+
+                                    <div class="col-sm-8">
+
+                                        
+
+                                        
+
+                                        
+
+                                    <input type="text" class="form-control" name="email" value=""></div>
+
+                                </div> </div>
+
+								
+
+								
+
+							
+
+								
+
+								
+
+							
+
+							
+
+							<div class="col-md-6" style="margin-top:10px;  margin-bottom:10px">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4"> &#2480;&#2453;&#2509;&#2468;&#2503;&#2480; &#2455;&#2509;&#2480;&#2497;&#2474; <span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        
+
+                     
+
+									<select class="form-control" name="fld_blood"><option value=""> Select Blood Group </option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
+
+                                </div> </div>	
+
+								
+
+								
+
+								
+
+								
+
+								
+
+								
+
+								
+
+								
+
+								
+
+								<div class="col-md-6" style="margin-top:10px;  margin-bottom:10px">
+
+                                <div class="form-group">
+
+                                    <label for="name_bn" class="control-label col-sm-4">&#2459;&#2476;&#2495;<span class="mark">*</span></label>
+
+                                    <div class="col-sm-8">
+
+                                        
+
+                                        
+
+                                        
+
+                                        <input type="file" class="form-control" name="fileUpload" value=""></div>
+
+                                </div> </div>
+
+					
+
+					
+
+					<div class="col-md-12" style="margin-top:10px;  margin-bottom:10px">
+
+                                <div class="form-group">
+
+                                  
+
+                                    <div class="col-sm-10">
+
+                                        
+
+                                        <button class="btn btn-primary" type="submit" style="font-size:20px">&#2474;&#2480;&#2476;&#2480;&#2509;&#2468;&#2496; &#2471;&#2494;&#2474;</button>
+
+
+
+                                        
+
+                                    </div>
+
+                                </div> </div>
+
+
+
+					 
+
+            </form></div>
+
+        </div>
+
+        </div>
+
+        </div>
+
+        </div>
+
+        <div class="clearfix">
+
+		
+
+        &#65279;<div class="container footer-bottom">
+
+    <div class="row">
+
+        <div class="">
+
+            <div class="col-md-6 col-sm-12 col-xs-12">
+
+                <div class="copyright" style="color: #ed1c24;">
+
+                    
+
+                </div>
+
+            </div>
+
+            <div class="col-md-2 col-sm-12 col-xs-12">
+
+              
+
+            </div>
+
+            <div class="col-md-4 col-sm-12 col-xs-12">
+
+                <div class="copyright powered">
+
+                    <a style="color: #222222;text-decoration: none;" href="tti.html"> </a> - <a style="color: #222222;" target="_blank" href="#"> Swift Soluutionsbd <img src="images/image-logo-lg.svg" style="height: 25px; margin-left: 3px;"></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> 
+
+</div>
+
+
+
+<script>
+
+$(document).ready(function() {
+
+				$('#myModal').modal({
+
+				show: true,
+
+				})
+
+			});
+
+</script><div class="modal fade" id="myModal" role="dialog">
+
+    <div class="modal-dialog">
+
+    
+
+      <!-- Modal content-->
+
+      <div class="modal-content">
+
+      <div class="modal-header">
+
+        <a href="index.html"><button type="button" class="close">&times;</button></a>
+
+        <center><h3 class="modal-title" style="color:red;">&#2477;&#2480;&#2509;&#2468;&#2495;&#2480; &#2472;&#2495;&#2480;&#2509;&#2470;&#2503;&#2486;&#2472;&#2494;</h3></center>
+
+      </div>
+
+        <div class="modal-body">
+
+          <h5 style="line-height:1.3;">
+
+				<strong>&#2453;)</strong> &#2453;&#2494;&#2434;&#2454;&#2495;&#2468; &#2453;&#2503;&#2472;&#2509;&#2470;&#2509;&#2480;&#2503;&#2480; &#2441;&#2474;-&#2474;&#2480;&#2495;&#2458;&#2494;&#2482;&#2453; &#2476;&#2480;&#2494;&#2476;&#2480; &#2438;&#2476;&#2503;&#2470;&#2472; &#2453;&#2480;&#2468;&#2503; &#2489;&#2476;&#2503;&#2404; &#2447;&#2453;&#2460;&#2472; &#2474;&#2509;&#2480;&#2486;&#2495;&#2453;&#2509;&#2487;&#2467;&#2494;&#2480;&#2509;&#2469;&#2496; &#2447;&#2453;&#2503;&#2480; &#2437;&#2471;&#2495;&#2453; &#2463;&#2509;&#2480;&#2503;&#2465;&#2503; &#2438;&#2476;&#2503;&#2470;&#2472; &#2453;&#2480;&#2468;&#2503; &#2474;&#2494;&#2480;&#2476;&#2503;&#2404; <br><br><strong>&#2454;) </strong>&#2476;&#2480;&#2509;&#2467;&#2495;&#2468; &#2453;&#2507;&#2480;&#2509;&#2488;/&#2463;&#2509;&#2480;&#2503;&#2465;&#2503; &#2477;&#2480;&#2509;&#2468;&#2495; &#2489;&#2468;&#2503; &#2439;&#2458;&#2509;&#2459;&#2497;&#2453; &#2476;&#2494; &#2438;&#2455;&#2509;&#2480;&#2489;&#2496; &#2474;&#2509;&#2480;&#2494;&#2480;&#2509;&#2469;&#2496;&#2480; &#2476;&#2479;&#2492;&#2488; &#2437;&#2476;&#2486;&#2509;&#2479;&#2439; &#2535;&#2542; &#2489;&#2468;&#2503; &#2537;&#2539; &#2476;&#2510;&#2488;&#2480; &#2447;&#2480; &#2478;&#2471;&#2509;&#2479;&#2503; &#2489;&#2468;&#2503; &#2489;&#2476;&#2503;&#2404; &#2474;&#2509;&#2480;&#2494;&#2480;&#2509;&#2469;&#2496;&#2453;&#2503; &#2476;&#2503;&#2453;&#2494;&#2480; &#2479;&#2497;&#2476;&#2453; &#2476;&#2494; &#2479;&#2497;&#2476;&#2472;&#2494;&#2480;&#2496; &#2489;&#2468;&#2503; &#2489;&#2476;&#2503;&#2404; &#2478;&#2497;&#2453;&#2509;&#2468;&#2495;&#2479;&#2507;&#2470;&#2509;&#2471;&#2494;&#2480; &#2488;&#2472;&#2509;&#2468;&#2494;&#2472;&#2470;&#2503;&#2480; &#2437;&#2455;&#2509;&#2480;&#2494;&#2471;&#2495;&#2453;&#2494;&#2480; &#2470;&#2503;&#2479;&#2492;&#2494; &#2489;&#2476;&#2503;&#2404;<br><br><strong>&#2455;) </strong>&#2453;&#2478;&#2509;&#2474;&#2495;&#2441;&#2463;&#2494;&#2480; &#2476;&#2503;&#2488;&#2495;&#2453; &#2447;&#2472;&#2509;&#2465; &#2438;&#2439;&#2488;&#2495;&#2463;&#2495; &#2447;&#2474;&#2509;&#2482;&#2495;&#2453;&#2503;&#2486;&#2472; &#2453;&#2507;&#2480;&#2509;&#2488; &#2451; &#2474;&#2509;&#2480;&#2475;&#2503;&#2486;&#2472;&#2494;&#2482; &#2455;&#2509;&#2480;&#2494;&#2475;&#2495;&#2453;&#2509;&#2488; &#2465;&#2495;&#2460;&#2494;&#2439;&#2472; &#2453;&#2507;&#2480;&#2509;&#2488;&#2503; &#2447;&#2439;&#2458;, &#2447;&#2488;, &#2488;&#2495; &#2474;&#2494;&#2486;/&#2488;&#2478;&#2478;&#2494;&#2472;&#2503;&#2480; &#2474;&#2480;&#2496;&#2453;&#2509;&#2487;&#2494;&#2479;&#2492; &#2441;&#2468;&#2509;&#2468;&#2496;&#2480;&#2509;&#2467;/&#2488;&#2478;&#2478;&#2494;&#2472;&#2503;&#2480; &#2453;&#2494;&#2451;&#2478;&#2495; &#2478;&#2494;&#2470;&#2509;&#2480;&#2494;&#2488;&#2494; &#2469;&#2503;&#2453;&#2503; &#2441;&#2468;&#2509;&#2468;&#2496;&#2480;&#2509;&#2467; &#2474;&#2509;&#2480;&#2494;&#2480;&#2509;&#2469;&#2496;&#2455;&#2467; &#2438;&#2476;&#2503;&#2470;&#2472; &#2453;&#2480;&#2468;&#2503; &#2474;&#2494;&#2480;&#2476;&#2503;&#2472;&#2404; <br><br><strong>&#2456;) </strong>&#2439;&#2482;&#2503;&#2453;&#2509;&#2463;&#2509;&#2480;&#2472;&#2495;&#2453;&#2509;&#2488;, &#2438;&#2480;&#2447;&#2488;&#2495; &#2451; &#2439;&#2482;&#2503;&#2453;&#2509;&#2463;&#2509;&#2480;&#2495;&#2453;&#2509;&#2479;&#2494;&#2482; &#2447;&#2472;&#2509;&#2465; &#2489;&#2494;&#2441;&#2460; &#2451;&#2479;&#2492;&#2509;&#2479;&#2494;&#2480;&#2495;&#2434; &#2463;&#2509;&#2480;&#2503;&#2465;&#2503;&#2480; &#2453;&#2509;&#2487;&#2503;&#2468;&#2509;&#2480;&#2503; &#2437;&#2487;&#2509;&#2463;&#2478; &#2486;&#2509;&#2480;&#2503;&#2467;&#2496;/&#2488;&#2478;&#2478;&#2494;&#2472; &#2474;&#2480;&#2496;&#2453;&#2509;&#2487;&#2494;&#2479;&#2492; &#2441;&#2468;&#2509;&#2468;&#2496;&#2480;&#2509;&#2467; &#2474;&#2509;&#2480;&#2494;&#2480;&#2509;&#2469;&#2496;&#2455;&#2467; &#2438;&#2476;&#2503;&#2470;&#2472; &#2453;&#2480;&#2468;&#2503; &#2474;&#2494;&#2480;&#2476;&#2503;&#2472;&#2404;  <br><br><strong>&#2457;) </strong>&#2488;&#2494;&#2453;&#2509;&#2487;&#2494;&#2468;&#2503;&#2480; &#2460;&#2472;&#2509;&#2479; &#2472;&#2495;&#2480;&#2509;&#2471;&#2494;&#2480;&#2495;&#2468; &#2468;&#2494;&#2480;&#2495;&#2454;&#2503; &#2488;&#2434;&#2486;&#2509;&#2482;&#2495;&#2487;&#2509;&#2463; &#2472;&#2495;&#2480;&#2509;&#2476;&#2494;&#2458;&#2472;&#2496; &#2476;&#2507;&#2480;&#2509;&#2465;&#2503;&#2480; &#2488;&#2494;&#2478;&#2472;&#2503; &#2472;&#2495;&#2480;&#2509;&#2471;&#2494;&#2480;&#2495;&#2468; &#2488;&#2478;&#2479;&#2492;&#2503; &#2489;&#2494;&#2460;&#2495;&#2480; &#2489;&#2468;&#2503; &#2489;&#2476;&#2503;&#2404; &#2447; &#2460;&#2472;&#2509;&#2479; &#2453;&#2507;&#2472; &#2474;&#2509;&#2480;&#2453;&#2494;&#2480; &#2463;&#2495;.&#2447;./&#2465;&#2495;.&#2447;. &#2470;&#2503;&#2479;&#2492;&#2494; &#2489;&#2476;&#2503; &#2472;&#2494;&#2404; <br><br><span style=" font-size:30px;"> - </span> <span style="color:red; font-size:30px;">*</span> &#2458;&#2495;&#2489;&#2509;&#2472;&#2495;&#2468; &#2456;&#2480;&#2455;&#2497;&#2482;&#2507; &#2437;&#2476;&#2486;&#2509;&#2479; &#2474;&#2498;&#2480;&#2467;&#2496;&#2479;&#2492;<br><span style=" font-size:30px;"> </span> <br><br>
+
+                                   
+
+                                   
+
+				
+
+				&#2438;&#2474;&#2472;&#2495; &#2479;&#2470;&#2495; &#2477;&#2480;&#2509;&#2468;&#2495;&#2480; &#2438;&#2476;&#2503;&#2470;&#2472; &#2475;&#2480;&#2478;&#2463;&#2495; &#2474;&#2498;&#2480;&#2467; &#2453;&#2480;&#2468;&#2503; &#2458;&#2494;&#2472; &#2468;&#2494;&#2489;&#2482;&#2503; <b><span style="color:blue;">&#2477;&#2480;&#2509;&#2468;&#2495; &#2475;&#2480;&#2478; </span></b> &#2476;&#2494;&#2463;&#2472;&#2503; &#2453;&#2509;&#2482;&#2495;&#2453; &#2453;&#2480;&#2497;&#2472; &#2437;&#2469;&#2476;&#2494; <b><span style="color:#208e24;">&#2447;&#2454;&#2472; &#2472;&#2479;&#2492;</span></b> &#2476;&#2494;&#2463;&#2472;&#2503; &#2453;&#2509;&#2482;&#2495;&#2453; &#2453;&#2480;&#2503; &#2476;&#2503;&#2480; &#2489;&#2479;&#2492;&#2503; &#2479;&#2494;&#2472;&#2404;
+			
+				</h5>
+				
+				
+	    <h5 style="color:red;"> *** &#2474;&#2509;&#2480;&#2475;&#2503;&#2486;&#2472;&#2494;&#2482; &#2455;&#2509;&#2480;&#2494;&#2475;&#2495;&#2453;&#2509;&#2488; &#2465;&#2495;&#2460;&#2494;&#2439;&#2472; &#2453;&#2507;&#2480;&#2509;&#2488;&#2503; &#2486;&#2497;&#2471;&#2497;&#2478;&#2494;&#2468;&#2509;&#2480; &#2540; &#2463;&#2495; &#2453;&#2503;&#2472;&#2509;&#2470;&#2509;&#2480;&#2503; &#2438;&#2476;&#2503;&#2470;&#2472; &#2453;&#2480;&#2468;&#2503; &#2474;&#2494;&#2480;&#2476;&#2503;&#2472;&#2404; 
+&#2535;) &#2466;&#2494;&#2453;&#2494; 
+&#2536;) &#2458;&#2463;&#2509;&#2480;&#2455;&#2509;&#2480;&#2494;&#2478; 
+&#2537;) &#2454;&#2497;&#2482;&#2472;&#2494; 
+&#2538;) &#2480;&#2494;&#2460;&#2486;&#2494;&#2489;&#2496; 
+&#2539;) &#2488;&#2495;&#2482;&#2503;&#2463; 
+&#2540;) &#2476;&#2480;&#2495;&#2486;&#2494;&#2482;   </h5>
+	
+	
+        </div>
+
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-primary" data-dismiss="modal">&#2477;&#2480;&#2509;&#2468;&#2495; &#2475;&#2480;&#2478; </button>
+
+          <a href="about.html"><button type="button" class="btn btn-success">&#2447;&#2454;&#2472; &#2472;&#2479;&#2492;</button></a>
+
+        </div>
+
+      </div>
+
+      
+
+    </div>
+
+  </div>
+
+
+
+&#65279;
+
+        <script src="js/js-jquery.js"></script><script src="js/js-bootstrap.min.js"></script><script src="js/js-datePicker.js"></script><script src="js/js-alert.js"></script><script src="js/js-alertFunction.js"></script><script src="js/js-bkkbScript.js"></script><script>
+
+
+
+
+
+
+
+            $(document).ready(function () {
+
+                $('#employee_type').on('change', function () {
+
+                    $('#employee_working_type').val('');
+
+                    if (this.value == 'Working')
+
+                    {
+
+                        $("#employeeJobType").show();
+
+                    } else
+
+                    {
+
+                        $("#employeeJobType").hide();
+
+                    }
+
+                });
+
+            });
+
+
+
+            $(document).ready(function () {
+
+                $('#employee_working_type').on('change', function () {
+
+                    if (this.value == 'Revenue')
+
+                    {
+
+                        $("#employeePvno").show();
+
+                    } else
+
+                    {
+
+                        $("#employeePvno").hide();
+
+                    }
+
+                });
+
+            });
+
+            $(document).ready(function () {
+
+                $('#employee_type').on('change', function () {
+
+                    if (this.value == 'Not Working')
+
+                    {
+
+                        $("#employeePvno").hide();
+
+                    }
+
+                });
+
+            });
+
+			
+
+
+
+
+
+        </script></body></html>
